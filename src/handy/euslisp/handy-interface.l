@@ -35,14 +35,14 @@
        (progn
 	 (ros::publish "/left_wheel" (instance std_msgs::int32 :init :data 1))
 	 (ros::publish "/right_wheel" (instance std_msgs::int32 :init :data 1))
-	 (unix::usleep (/ x 3.5))
+	 (unix::usleep (/ (* x 2857143) 100))
 	 (ros::publish "/left_wheel" (instance std_msgs::int32 :init :data 0))
 	 (ros::publish "/right_wheel" (instance std_msgs::int32 :init :data 0))
 	 )
      (progn
        (ros::publish "/left_wheel" (instance std_msgs::int32 :init :data -1))
        (ros::publish "/right_wheel" (instance std_msgs::int32 :init :data -1))
-       (sleep (- 0 (/ (* x 28571400) 100)))
+       (unix::usleep (- 0 (/ (* x 2857143) 100)))
        (ros::publish "/left_wheel" (instance std_msgs::int32 :init :data 0))
        (ros::publish "/right_wheel" (instance std_msgs::int32 :init :data 0))
        ))
@@ -53,7 +53,7 @@
        (progn
 	 (ros::publish "/left_wheel" (instance std_msgs::int32 :init :data -1))
 	 (ros::publish "/right_wheel" (instance std_msgs::int32 :init :data 1))
-	 (unix::usleep (/ (* theta 9200000) 180.0))
+	 (unix::usleep (/ (* theta 9200000) 180))
 	 (ros::publish "/left_wheel" (instance std_msgs::int32 :init :data 0))
 	 (ros::publish "/right_wheel" (instance std_msgs::int32 :init :data 0))
 	 )
