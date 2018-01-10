@@ -7,16 +7,16 @@ from std_msgs.msg import Float64
 pi = pigpio.pi()
 
 def shoulder_controller(msg):
-	pi.set_servo_pulsewidth(26,msg)
+	pi.set_servo_pulsewidth(26,msg.data)
 
 def elbow_controller(msg):
-	pi.set_servo_pulsewidth(19,msg)
+	pi.set_servo_pulsewidth(19,msg.data)
 
 def wrist_controller(msg):
-	pi.set_servo_pulsewidth(13,msg)
+	pi.set_servo_pulsewidth(13,msg.data)
 
 def finger_controller(msg):
-	pi.set_servo_pulsewidth(9,msg)
+	pi.set_servo_pulsewidth(9,msg.data)
 
 rospy.init_node('servo_controller',anonymous=True)
 rospy.Subscriber("/angle_shoulder",Float64,shoulder_controller)

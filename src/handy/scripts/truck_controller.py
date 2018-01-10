@@ -18,10 +18,10 @@ pi.set_mode(left_red,pigpio.OUTPUT)
 pi.set_mode(left_black,pigpio.OUTPUT)
 
 def left_wheel(msg):
-    if(msg == 1):
+    if(msg.data == 1):
         pi.write(left_red,1)
         pi.write(left_black,0)
-    elif(msg == -1):
+    elif(msg.data == -1):
         pi.write(left_red,0)
         pi.write(left_black,1)
     else:
@@ -29,10 +29,10 @@ def left_wheel(msg):
         pi.write(left_black,0)
 
 def right_wheel(msg):
-    if(msg == 1):
+    if(msg.data == 1):
         pi.write(right_red,1)
         pi.write(right_black,0)
-    elif(msg == -1):
+    elif(msg.data == -1):
         pi.write(right_red,0)
         pi.write(right_black,1)
     else:
