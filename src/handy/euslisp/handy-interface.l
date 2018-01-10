@@ -1,4 +1,4 @@
-#!/usr/bin/env/ roseus
+#!/usr/bin/env roseus
 
 (load "handy.l")
 

@@ -1,0 +1,8 @@
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/./env.sh
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/./setup.sh
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/./setup.bash
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/./setup.zsh
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/./_setup_util.py
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+Symlinking /home/mech-user/dyson_ws/src/handy/devel/lib/pkgconfig/catkin_tools_prebuild.pc

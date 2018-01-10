@@ -1,0 +1,6 @@
+devel_space: /home/mech-user/dyson_ws/src/handy/devel
+install: false
+install_space: /home/mech-user/dyson_ws/src/handy/install
+profile: default
+source_space: /home/mech-user/dyson_ws/src/handy/src
+workspace: /home/mech-user/dyson_ws/src/handy
