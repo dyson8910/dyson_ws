@@ -1,7 +1,5 @@
 #!/usr/bin/env/ roseus
-
 (load "handy.l")
-
 (defclass handy-interface
   :super propertied-object
   )
@@ -17,7 +15,7 @@
    (ros::advertise "/right_wheel" std_msgs::int32 1)
    )
   (:angle-vector
-   (ang-vec)
+   (ang-vec);;送るパルス幅の計算
    (let* ((s-ang (instance std_msgs::float64 :init
 			   :data (elt ang-vec 0)))
 	  (e-ang (instance std_msgs::float64 :init
@@ -29,7 +27,7 @@
      (ros::publish "/angle_wrist" w-ang)
      )
    )
-  (:go-pos;;TODO 時間を決定する
+  (:go-pos
    (x)
    (if (> x 0)
        (progn
