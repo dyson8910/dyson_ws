@@ -16,7 +16,7 @@ def wrist_controller(msg):
 	pi.set_servo_pulsewidth(13,msg.data)
 
 def finger_controller(msg):
-	pi.set_servo_pulsewidth(9,msg.data)
+	pi.set_servo_pulsewidth(6,msg.data)
 
 rospy.init_node('servo_controller',anonymous=True)
 rospy.Subscriber("/angle_shoulder",Float64,shoulder_controller)
