@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="handy" type="servo_controller.py" name="servo_controller">
+	</node>
+	<node pkg="handy" type="truck_controller.py" name="truck_controller">
+	</node>
+
+</launch>
