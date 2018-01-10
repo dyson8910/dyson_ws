@@ -29,7 +29,7 @@
      (ros::publish "/angle_wrist" w-ang)
      )
    )
-  (:go-pos
+  (:go-x
    (x)
    (if (> x 0)
        (progn
@@ -70,8 +70,8 @@
    (do ((i 0 (+ i 1)))
        ((> i 40) t)
        (progn
-	 (ros::publish "/angle_finger" (instance std_msgs::float64
-						 :init :data i))
+	 (ros::publish "/angle_finger"
+		       (instance std_msgs::float64 :init :data (+ 1400 (* i 10))))
 	 (unix::usleep 100000)
 	 ))
    )
@@ -80,8 +80,8 @@
    (do ((i 0 (+ i 1)))
        ((> i 40) t)
        (progn
-	 (ros::publish "/angle_finger" (instance std_msgs::float64
-						 :init :data (- 40 i)))
+	 (ros::publish "/angle_finger"
+		       (instance std_msgs::float64 :init :data (+ 1400 (* (- 40 i) 10))))
 	 (unix::usleep 100000)
 	 ))
    )

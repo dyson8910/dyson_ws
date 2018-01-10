@@ -3,6 +3,7 @@
 import rospy
 import roslib
 import pigpio
+from std_msgs.msg import Int32
 
 pi = pigpio.pi()
 
@@ -41,7 +42,7 @@ def right_wheel(msg):
         pi.write(right_black,0)
 
 rospy.init_node('truck_controller'anonymous=True)
-rospy.Subscriber("/left_wheel",,left_wheel)
-rospy.Subscriber("/right_wheel",,right_wheel)
+rospy.Subscriber("/left_wheel",Int32,left_wheel)
+rospy.Subscriber("/right_wheel",Int32,right_wheel)
 
 rospy.spin()
