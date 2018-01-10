@@ -1,5 +1,7 @@
 #!/usr/bin/env/ roseus
+
 (load "handy.l")
+
 (defclass handy-interface
   :super propertied-object
   )
@@ -15,13 +17,13 @@
    (ros::advertise "/right_wheel" std_msgs::int32 1)
    )
   (:angle-vector
-   (ang-vec);;送るパルス幅の計算
+   (ang-vec)
    (let* ((s-ang (instance std_msgs::float64 :init
-			   :data (elt ang-vec 0)))
+			   :data (+ 1500 (* (elt ang-vec 0) -10)))) 
 	  (e-ang (instance std_msgs::float64 :init
-			   :data (elt ang-vec 1)))
+			   :data (+ 750 (* (elt ang-vec 1) 1.67))))
 	  (w-ang (instance std_msgs::float64 :init
-			   :data (elt ang-vec 2))))
+			   :data (+ 1500 (* (elt ang-vec 2) 10)))))
      (ros::publish "/angle_shoulder" s-ang)
      (ros::publish "/angle_elbow" e-ang)
      (ros::publish "/angle_wrist" w-ang)
@@ -65,13 +67,23 @@
    )
   (:start-grasp
    ()
-   (ros::publish "/angle_finger" (instance std_msgs::float64 :init
-					   :data 40))
+   (do ((i 0 (+ i 1)))
+       ((> i 40) t)
+       (progn
+	 (ros::publish "/angle_finger" (instance std_msgs::float64
+						 :init :data i))
+	 (unix::usleep 100000)
+	 ))
    )
   (:stop-grasp
    ()
-   (ros::publish "/angle_finger" (instance std_msgs::float64 :init
-					   :data -10))
+   (do ((i 0 (+ i 1)))
+       ((> i 40) t)
+       (progn
+	 (ros::publish "/angle_finger" (instance std_msgs::float64
+						 :init :data (- 40 i)))
+	 (unix::usleep 100000)
+	 ))
    )
   )
 

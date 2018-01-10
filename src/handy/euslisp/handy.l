@@ -45,7 +45,7 @@
      (setq l3 (instance bodyset-link :init (make-cascoords) :bodies (list a1)))
      (setq l4 (instance bodyset-link :init (make-cascoords) :bodies (list h)))
 
-     (setq end-coords (make-cascoords :pos #f(50 0 60)))
+     (setq end-coords (make-cascoords :pos #f(50 0 60) :rpy (float-vector 0 (* pi/2 3) 0)))
      (send l4 :assoc end-coords)
      
      (send l4 :locate #f(0 10 210))
@@ -62,15 +62,21 @@
      (setq j1 (instance rotational-joint
 			:init :name 'j1
 			:parent-link l1 :child-link l2
-			:axis :y)
+			:axis :y
+			:max 60
+			:min -60)
 	   j2 (instance rotational-joint
 			:init :name 'j2
 			:parent-link l2 :child-link l3
-			:axis :y)
+			:axis :y
+			:max 80
+			:min -80)
 	   j3 (instance rotational-joint
 			:init :name 'j3
 			:parent-link l3 :child-link l4
-			:axis :y))
+			:axis :y
+			:max 50
+			:min -50))
      (setq links (list l1 l2 l3 l4))
      (setq joint-list (list j1 j2 j3))
      (send self :init-ending)
@@ -82,5 +88,20 @@
    (send self :angle-vector
 	 (float-vector 0 0 0)
 	 )
+   )
+  (:ik
+   (x z tr ro)
+   (let (c)
+     (setq c (make-cascoords :pos (float-vector x 6.0 z)))
+     (send self :inverse-kinematics c
+	   :stop 200
+	   :link-list (send self :link-list (send self :end-coords :parent))
+	   :move-target (send self :end-coords)
+	   :translation-axis tr
+	   :rotation-axis ro
+	   :debug-view :no-message
+	   :p-limit 10
+	   :r-limit 0.05)
+     )
    )
   )
