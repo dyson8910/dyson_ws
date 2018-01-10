@@ -41,7 +41,7 @@ def right_wheel(msg):
         pi.write(right_red,0)
         pi.write(right_black,0)
 
-rospy.init_node('truck_controller'anonymous=True)
+rospy.init_node('truck_controller',anonymous=True)
 rospy.Subscriber("/left_wheel",Int32,left_wheel)
 rospy.Subscriber("/right_wheel",Int32,right_wheel)
 
