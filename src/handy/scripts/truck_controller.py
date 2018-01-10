@@ -17,8 +17,6 @@ pi.set_mode(right_black,pigpio.OUTPUT)
 pi.set_mode(left_red,pigpio.OUTPUT)
 pi.set_mode(left_black,pigpio.OUTPUT)
 
-pi.write(right_red,1)
-
 def left_wheel(msg):
     if(msg == 1):
         pi.write(left_red,1)
